@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Employee Managment System</title>
+  </head>
+  <body class="btn-warning">
+    <h2 class="text-center text-light bg-dark">Employee Managment System</h2>
+    <form method="POST">
+        {% csrf_token %}
+    <div class="container">
+        <div class="form-group">
+            <label class="text-light bg-dark">EMPLOYEE ID (to Search)</label>
+            <input type="text" name="txtid" class="form-control btn-info">
+        </div>
+        <div class="form-group">
+            <label class="text-light bg-dark">EMPLOYEE NAME</label>
+            <input type="text" name="txtName" class="form-control" value={{emp1.name}}>
+        </div>
+        <div class="form-group">
+            <label class="text-light bg-dark">AGE</label>
+            <input type="text" name="txtAge" class="form-control btn-info" value={{emp1.age}}>
+        </div>
+        <div class="form-group">
+            <label class="text-light bg-dark">ADDRESS</label>
+            <input type="text" name="txtAddress" class="form-control" value={{emp1.address}}>
+        </div>
+        <div class="form-group">
+            <label class="text-light bg-dark">YEAR OF EXPERIENCE</label>
+            <input type="text" name="txtExp" class="form-control btn-info" value={{emp1.year_of_exp}}>
+        </div>
+        <div class="form-group">
+            <label class="text-light bg-dark">CONTACT NUMBER</label>
+            <input type="text" name="txtNo" class="form-control" value={{emp1.contact}}>
+        </div>
+        <br>
+        <div class="form-group">
+            <table class='table table-bordered btn-primary text-center'>
+              <thead>
+                  <tr>
+                      <th class="bg-dark text-center">ID</th>
+                      <th class="bg-dark text-center">Employee Name</th>
+                      <th class="bg-dark text-center">Age</th>
+                      <th class="bg-dark text-center">Address</th>
+                      <th class="bg-dark text-center">Year of Exp</th>
+                      <th class="bg-dark text-center">ContactNo.</th>
+                  </tr>
+              </thead>
+              {% for emp in allemp %} 
+              <tr>
+                  <td>{{emp.id}}</td>
+                  <td>{{emp.name}}</td>
+                  <td>{{emp.age}}</td>
+                  <td>{{emp.address}}</td>
+                  <td>{{emp.year_of_exp}}</td>
+                  <td>{{emp.contact}}</td>
+                </tr> 
+             {% endfor %}
+            </table>
+        </div>
+
+        <button type="submit" name="btninsert" class="btn btn-success">Insert</button>
+        <button type="submit" name="btnupdate" class="btn btn-info">Update</button>
+        <button type="submit" name="btndelete" class="btn btn-secondary">Delete</button>
+        <button type="submit" name="btnsearch" class="btn btn-danger">Search</button>
+        <button type="submit" name="btnshow" class="btn btn-primary">ShowAll</button>
+        
+        
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+    </div>
+    </form>
+  </body>
+</html>
